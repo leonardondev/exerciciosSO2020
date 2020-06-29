@@ -1,30 +1,43 @@
 import java.io.*;
+import java.util.Scanner;
 
-public class shellJava {
+public class ShellJava {
 
 
   public static void main(String[] args){
-    
+
     // Declaracao das variaveis
     ProcessBuilder pb;
     Process process1;
- 
-    // Inicializacao das variavais
-    pb = new ProcessBuilder(args[0], args[1]).inheritIO();
-    
+    Scanner sc;
+    String line;
 
-    try{
-        process1 = pb.start();//cria processo filho
-        process1.waitFor(); //espero pelo termino de sua execucao
-  
-        System.out.print("retorno do processo filho: ");
-        System.out.println(process1.exitValue());
-        
-    }catch(IOException ioe){//erro no inheritIO
-        System.err.println(ioe);
-    
-    }catch (InterruptedException ie){//erro no waitfor
-         System.err.println(ie);
+    // Inicializacao das variavais
+    sc = new Scanner(System.in);
+
+    System.out.print("shell$ ");
+    line = sc.nextLine();
+
+    while (!line.equals("exit")) {
+
+      if (!line.equals("")) {
+        pb = new ProcessBuilder(line.split(" ")).inheritIO();
+        try{
+            process1 = pb.start();//cria processo filho
+            process1.waitFor(); //espero pelo termino de sua execucao
+        }
+        catch(IOException ioe){//erro no inheritIO
+          System.err.println("comando nao encontrado.");
+
+        }
+        catch (InterruptedException ie){//erro no waitfor
+          System.err.println(ie);
+        }
+      }
+
+      System.out.print("shell$ ");
+      //ler nova linha
+			line  = sc.nextLine();
     }
 
   }
