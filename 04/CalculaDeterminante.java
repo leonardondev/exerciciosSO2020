@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class CalculaDeterminante{
 
   public static void main(String[] args) {
-    
+
 
     //decladacao das variaveis
     int dimensao;

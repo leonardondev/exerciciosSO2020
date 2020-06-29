@@ -20,7 +20,7 @@ int main(int argc, char **argv){
 
 	/* verificar quantidade de parametros */
 	if (argc != 11){	/*erro*/
-	
+
 		printf("Nro incorreto de parmetros\n");
 		printf("uso: Fibo <limite_sequencia>\n");
 		exit(-1);
@@ -32,16 +32,16 @@ int main(int argc, char **argv){
 		  numero2[i] = atoi(argv[i+1]);
     }
 	}
-  
+
 	/* criao o processo filho */
 	pid_filho = fork();	/*invoca filho */
-	
+
 	if (pid_filho < 0){/* erro na criacao processo filho */
 		printf("Erro fork: abortado\n");
 		exit(-1);
 	}
 	else{
-    
+
     if (pid_filho == 0){/*processo filho*/
 
       /* quick sort */
@@ -55,7 +55,7 @@ int main(int argc, char **argv){
     }
     else {/*processo pai*/
       wait(NULL);
-      
+
       /* ordenacao simples */
       c3 = clock();
       int i,j;
@@ -76,7 +76,7 @@ int main(int argc, char **argv){
       exit(0);
     }
   }
-  
+
 }
 
 

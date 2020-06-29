@@ -23,7 +23,7 @@ public class Determinante extends Thread {
             - m.getElement(0, 1) * m.getElement(1, 0);
       }
 
-      //laplace na primeira linha 
+      //laplace na primeira linha
       for (int j = 0; j < m.getRowsSize()-1; j++) {
         Determinante subDet = new Determinante( m.getSubmatrix(j) );
         subDet.start();
@@ -33,7 +33,7 @@ public class Determinante extends Thread {
 
     }
   }
-  
+
 
   float getDeterminante(){
     return det;
