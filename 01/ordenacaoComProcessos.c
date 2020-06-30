@@ -12,14 +12,14 @@ void quickSort(int valor[], int esquerda, int direita);
 int main(int argc, char **argv){
   /* declaracao das variaveis */
   pid_t pid_filho; /*variavel que armazena processos*/
-	int numero1[10];
-	int numero2[10];
+	int numero1[argc-1];
+	int numero2[argc-1];
   clock_t c1, c2, c3, c4; /* variáveis que contam ciclos do processador */
   float tmpPai, tmpFilho;
 
 
 	/* verificar quantidade de parametros */
-	if (argc != 11){	/*erro*/
+	if (argc < 2){	/*erro*/
 
 		printf("Nro incorreto de parmetros\n");
 		printf("uso: Fibo <limite_sequencia>\n");
@@ -27,7 +27,7 @@ int main(int argc, char **argv){
 	}
 	else {/* recebeu parametros corretamente */
     int i;
-    for (i = 0; i < 10; i++){
+    for (i = 0; i < argc-1; i++){
 		  numero1[i] = atoi(argv[i+1]);
 		  numero2[i] = atoi(argv[i+1]);
     }
@@ -46,7 +46,7 @@ int main(int argc, char **argv){
 
       /* quick sort */
       c1 = clock();
-      quickSort(numero1, 0, 9);
+      quickSort(numero1, 0, argc-2);
       c2 = clock();
 
       tmpFilho = (float)(c2 - c1)*1000/CLOCKS_PER_SEC; // tempo de execução em milissegundos
@@ -59,7 +59,7 @@ int main(int argc, char **argv){
       /* ordenacao simples */
       c3 = clock();
       int i,j;
-      for (i = 4; i > 0; i--){
+      for (i = argc-2; i > 0; i--){
         for ( j = 0; j < i; j++){
           if( numero2[j] > numero2[j+1] ){
             int aux = numero2[j];
