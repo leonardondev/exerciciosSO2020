@@ -1,8 +1,8 @@
 public class Determinante extends Thread {
 
   //Campos
-  Matrix m;
-  double det;
+  private Matrix m;
+  private double det;
 
   //Construtor
   public Determinante(Matrix matrix){
