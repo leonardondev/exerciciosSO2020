@@ -5,7 +5,7 @@ public class Soma {
       int a = Integer.parseInt(args[0]);
       int b = Integer.parseInt(args[1]);
 
-      System.out.println(args[0] + " + " + args[1] + " = " + (a+b) );
+      System.out.println( args[0] + " + " + args[1] + " = " + (a+b) );
 
     }
 }
