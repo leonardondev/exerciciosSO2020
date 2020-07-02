@@ -1,4 +1,5 @@
 import java.util.concurrent.Semaphore;
+import java.io.IOException;
 
 public class PrintJob extends Thread {
 
@@ -12,15 +13,19 @@ public class PrintJob extends Thread {
     this.doc = doc;
   }
 
-  public void run() {
-
+  @Override
+  public void run(){
     try {
       mutex.acquire();
-      System.out.println("imprimindo " + doc + "...");
+      printer.printJob(doc);  //imprimindo
     }
-    catch (InterruptedException e) {
-      e.printStackTrace();
+    catch (InterruptedException ie) {
+      ie.printStackTrace();
     }
+    catch(IOException ioe){
+      System.err.println("Erro durante a impressao");
+    }
+
     finally {
       mutex.release();
     }
